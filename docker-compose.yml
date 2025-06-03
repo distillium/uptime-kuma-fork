@@ -1,0 +1,23 @@
+services:
+  uptime-kuma:
+    build:
+      context: ./my_custom_uptime_kuma # Контекст сборки, где находится Dockerfile и папка с кастомными файлами
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3001:3001"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - kuma_data:/app/data
+    networks:
+      - remnawave-network
+    container_name: uptime-kuma
+
+networks:
+  remnawave-network:
+    name: remnawave-network
+    driver: bridge
+    external: true
+
+volumes:
+  kuma_data:
