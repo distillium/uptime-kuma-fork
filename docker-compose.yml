@@ -2,7 +2,7 @@ services:
   uptime-kuma:
     image: distillium/uptime-kuma-fork:1.23.16
 #    build:
-#      context: ./my_custom_uptime_kuma # Контекст сборки, где находится Dockerfile и папка с кастомными файлами
+#      context: ./my_custom_uptime_kuma
 #      dockerfile: Dockerfile
     restart: always
     ports:
