@@ -5,9 +5,8 @@ RUN mkdir -p /opt/kuma_src && chown node:node /opt/kuma_src
 USER node
 WORKDIR /opt/kuma_src
 RUN git clone --depth 1 --branch 1.23.16 https://github.com/louislam/uptime-kuma.git .
-# Копируем кастомизированные файлы из директории uptime_kuma_custom_files
 COPY --chown=node:node uptime_kuma_custom_files/i18n.js ./src/i18n.js
-# Строка с ru-RU.json удалена, как ты и просил
+COPY --chown=node:node uptime_kuma_custom_files/ru-RU.json ./src/lang/ru-RU.json
 COPY --chown=node:node uptime_kuma_custom_files/main.js ./src/main.js
 COPY --chown=node:node uptime_kuma_custom_files/app.scss ./src/assets/app.scss
 RUN npm ci
